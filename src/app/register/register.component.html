@@ -1,0 +1,66 @@
+<div class="container-fluid d-flex justify-content-center align-items-center">
+    <main class="col-12 col-md-4">
+        <form [formGroup]="registerForm">
+            <div class="text-center">
+                <img class="mb-4" src="assets/images/logo.jpg" alt="" width="100">
+            </div>
+
+            <h1 class="h3 mb-3 fw-normal text-center">Register</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" formControlName="username" name="username">
+                <label for="floatingInput">Username</label>
+                @if(submitted && registerForm.controls['username'].errors)
+                {
+                @if(registerForm.controls['username'].errors['required']){
+                <div class="text-danger my-2">Username is required</div>
+                }
+                @if(registerForm.controls['username'].errors['minlength']){
+                <div class="text-danger my-2">UserName must be at least 3 characters</div>
+                }
+
+                }
+            </div>
+
+            <div class="form-floating mt-2">
+                <input type="email" class="form-control" id="floatingInput" formControlName="email" name="email">
+                <label for="floatingInput">Email address</label>
+                @if(submitted && registerForm.controls['email'].errors)
+                {
+                @if(registerForm.controls['email'].errors['required']){
+                <div class="text-danger my-2">Email is required</div>
+                }
+                @if(registerForm.controls['email'].errors['minlength']){
+                <div class="text-danger my-2">...</div>
+                }
+
+                }
+            </div>
+            <div class="form-floating mt-2">
+                <input type="password" class="form-control" id="floatingPassword" formControlName="password"
+                    name="password">
+                <label for="floatingPassword">Password</label>
+                @if(submitted && registerForm.controls['password'].errors)
+                {
+                @if(registerForm.controls['password'].errors['required']){
+                <div class="text-danger my-2">Password is required</div>
+                }
+                @if(registerForm.controls['password'].errors['minlength']){
+                <div class="text-danger my-2">Password must be at least 6 characters</div>
+                }
+
+                }
+            </div>
+
+            <div class="checkbox mb-3 mt-2">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="submitRegister()">Register</button>
+
+
+            <p class="mt-5 mb-3 text-body-secondary text-center">© 2017–2021</p>
+        </form>
+    </main>
+</div>
